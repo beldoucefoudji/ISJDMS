@@ -174,6 +174,7 @@ function read_docx($filename) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload & Index - ISJ Docs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
     
     <style>
         /* 1. Global Reset & Colors (From your 2nd image) */
@@ -313,5 +314,6 @@ function read_docx($filename) {
     </form>
 </div>
 
+<script src="../../js/responsive.js"></script>
 </body>
 </html>

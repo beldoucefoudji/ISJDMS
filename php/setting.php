@@ -58,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Account Settings — ISJ</title>
     <link rel="stylesheet" href="../css/setting.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <style>
         .password-wrapper {
             position: relative;
@@ -167,5 +168,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             });
         });
     </script>
+    <script src="../js/responsive.js"></script>
 </body>
 </html>

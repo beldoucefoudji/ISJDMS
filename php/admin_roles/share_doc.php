@@ -40,6 +40,7 @@ if (!$doc) {
     <meta charset="UTF-8">
     <title>Share Document — ISJ Docs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
     <style>
         :root { --isj-blue: #061428; --isj-gold: #D4AF37; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
@@ -89,5 +90,6 @@ if (!$doc) {
         document.getElementById('sendBtn').style.opacity = '0.7';
     };
 </script>
+<script src="../../js/responsive.js"></script>
 </body>
 </html>

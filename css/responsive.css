@@ -1,0 +1,680 @@
+/* ===================================================
+   ISJ DOCS — GLOBAL RESPONSIVE STYLESHEET
+   Add <link rel="stylesheet" href="/css/responsive.css">
+   to every page's <head>, AFTER existing CSS files.
+   =================================================== */
+
+/* ---- 1. BASE RESET FOR MOBILE ---- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ---- 2. HAMBURGER MENU BUTTON (hidden on desktop) ---- */
+.hamburger-btn {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 2000;
+    background: #061428;
+    color: #D4AF37;
+    border: none;
+    border-radius: 6px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Sidebar overlay (mobile) */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1500;
+}
+
+/* ===================================================
+   3. DASHBOARD LAYOUTS (admin + user)
+   =================================================== */
+
+/* ---- Admin Dashboard ---- */
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-layout {
+    flex: 1;
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+/* ---- User Dashboard ---- */
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+/* ===================================================
+   4. TABLES — Horizontal scroll on small screens
+   =================================================== */
+.data-table-container,
+.table-card,
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.isj-table,
+.admin-table {
+    min-width: 600px;
+}
+
+/* ===================================================
+   5. FORMS — Login, Signup, Settings, Reset Password
+   =================================================== */
+.login-card,
+.signup-container,
+.recovery-container,
+.settings-card,
+.add-container,
+.edit-container,
+.form-container,
+.upload-container {
+    width: 100%;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.settings-grid,
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* ===================================================
+   6. STATS GRID (Admin Dashboard)
+   =================================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+/* ===================================================
+   7. FOLDER / CONTENT GRID (User Dashboard)
+   =================================================== */
+.folder-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.folder-card,
+.folder-card-new {
+    flex: 1 1 260px;
+    max-width: 100%;
+}
+
+/* ===================================================
+   8. PAGE HEADER FLEX (action bar rows)
+   =================================================== */
+.page-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* ===================================================
+   9. SEARCH BAR (User Dashboard)
+   =================================================== */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 450px;
+}
+
+.search-container input {
+    width: 100%;
+}
+
+/* ===================================================
+   10. HERO / WELCOME PAGE
+   =================================================== */
+.hero-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 5%;
+}
+
+.hero-content {
+    flex: 1 1 300px;
+}
+
+/* ===================================================
+   11. SHARE / VERIFY / FORGOT PAGES (centered cards)
+   =================================================== */
+.share-box,
+.verify-card,
+.auth-card,
+.auth-wrapper {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+/* ===================================================
+   12. FILTER HUB (Admin Home — 2-col search panels)
+   =================================================== */
+.filter-container > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* ===================================================
+   BREAKPOINT: TABLET  ≤ 1024px
+   =================================================== */
+@media (max-width: 1024px) {
+
+    /* Shrink sidebar slightly */
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-layout {
+        margin-left: 220px;
+    }
+
+    /* User dashboard sidebar */
+    :root {
+        --sidebar-width: 220px;
+    }
+
+    /* Hero illustration hidden */
+    .hero-visual {
+        display: none;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Admin filter hub */
+    .filter-container > div {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .filter-column {
+        border-right: none !important;
+        padding-right: 0 !important;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+    }
+
+    /* Stats */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Forms */
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===================================================
+   BREAKPOINT: MOBILE  ≤ 768px
+   =================================================== */
+@media (max-width: 768px) {
+
+    /* ---- Show hamburger, hide sidebar by default ---- */
+    .hamburger-btn {
+        display: flex;
+    }
+
+    /* Admin sidebar */
+    .admin-wrapper > .sidebar,
+    .dashboard-wrapper > .sidebar {
+        position: fixed;
+        top: 0;
+        left: -280px;
+        width: 260px;
+        height: 100vh;
+        z-index: 1600;
+        transition: left 0.28s ease;
+        overflow-y: auto;
+    }
+
+    .admin-wrapper > .sidebar.open,
+    .dashboard-wrapper > .sidebar.open {
+        left: 0;
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+    /* Adjust main content margins */
+    .main-layout {
+        margin-left: 0 !important;
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+        padding: 70px 16px 24px !important;
+        width: 100% !important;
+    }
+
+    .content-body {
+        padding: 70px 16px 24px;
+    }
+
+    /* ---- Admin Header ---- */
+    .admin-header {
+        padding: 0 16px;
+        height: 60px;
+    }
+
+    .header-search {
+        display: none;
+    }
+
+    .admin-header .header-search input {
+        display: none;
+    }
+
+    /* ---- User Header ---- */
+    .header-top {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 60px;
+        padding: 0 16px 0 68px;
+        z-index: 900;
+        background: #f8f9fa;
+    }
+
+    .search-container {
+        max-width: calc(100vw - 120px);
+    }
+
+    .search-container input {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    /* ---- Stats Grid ---- */
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: 18px;
+    }
+
+    /* ---- Page Header ---- */
+    .page-header-flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page-header-flex .btn-create,
+    .page-header-flex > div:last-child {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .btn-create {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* ---- Tables ---- */
+    .data-table-container,
+    .table-card,
+    .table-container {
+        margin: 0 -16px;
+        border-radius: 0;
+        padding: 0;
+    }
+
+    .isj-table th,
+    .isj-table td,
+    .admin-table th,
+    .admin-table td {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    /* Hide less important columns on mobile */
+    .isj-table th:nth-child(3),
+    .isj-table td:nth-child(3),
+    .admin-table th:nth-child(3),
+    .admin-table td:nth-child(3) {
+        display: none;
+    }
+
+    /* ---- Login / Auth Pages ---- */
+    .container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        overflow: auto;
+    }
+
+    .left-panel {
+        display: none;
+    }
+
+    .right-panel {
+        width: 100%;
+        padding: 24px 16px;
+        min-height: 100vh;
+        align-items: flex-start;
+        padding-top: 40px;
+    }
+
+    .login-card {
+        padding: 32px 20px;
+        border-radius: 16px;
+        max-width: 100%;
+        box-shadow: none;
+        border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .login-card h2 {
+        font-size: 1.8rem;
+    }
+
+    /* ---- Signup ---- */
+    .signup-container {
+        padding: 28px 18px;
+        border-radius: 12px;
+        margin: 20px auto;
+    }
+
+    /* ---- Settings ---- */
+    body.settings-page,
+    body {
+        padding: 16px;
+    }
+
+    .settings-container {
+        max-width: 100%;
+    }
+
+    .settings-grid,
+    .input-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .settings-actions {
+        flex-direction: column;
+    }
+
+    .btn-save,
+    .btn-cancel {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* ---- Folder Cards ---- */
+    .folder-grid {
+        flex-direction: column;
+    }
+
+    .folder-card-new {
+        width: 100% !important;
+    }
+
+    /* ---- Upload / Edit Forms ---- */
+    .upload-container,
+    .add-container,
+    .edit-container,
+    .form-container {
+        padding: 20px 16px;
+        margin: 0;
+        border-radius: 8px;
+    }
+
+    /* ---- Admin View Folder ---- */
+    .admin-wrapper .main-content {
+        padding: 70px 16px 24px;
+    }
+
+    /* ---- Section Header ---- */
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .section-header .btn-add,
+    .section-header button {
+        width: 100%;
+    }
+
+    /* ---- Filter Hub ---- */
+    .filter-container > div {
+        grid-template-columns: 1fr;
+    }
+
+    /* ---- About / Learn More ---- */
+    .about-container {
+        margin: 20px auto;
+        padding: 0 16px;
+    }
+
+    .about-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .mission-statement {
+        padding: 28px 20px;
+    }
+
+    /* ---- Share Doc Box ---- */
+    .share-box {
+        margin: 20px;
+        padding: 28px 20px;
+    }
+
+    /* ---- Verify OTP ---- */
+    .verify-card {
+        margin: 20px;
+        padding: 28px 20px;
+    }
+
+    .otp-input {
+        font-size: 24px;
+        letter-spacing: 8px;
+    }
+
+    /* ---- Forgot / Reset Password ---- */
+    .recovery-container,
+    .login-card.reset-card {
+        margin: 20px;
+        padding: 28px 20px;
+    }
+
+    /* ---- 2FA Verify ---- */
+    .auth-wrapper {
+        padding: 16px;
+    }
+
+    .auth-card {
+        padding: 32px 20px;
+    }
+
+    /* ---- Hero Section ---- */
+    .hero-section {
+        padding: 30px 5%;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-btns {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .main-btn,
+    .outline-btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    /* ---- Top Nav (Welcome) ---- */
+    .top-nav {
+        padding: 16px 5%;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    /* ---- OTP / Timer ---- */
+    .timer-container {
+        font-size: 13px;
+    }
+
+    /* ---- Folder Hierarchy (Plan Tab) ---- */
+    .folder-hierarchy ul {
+        padding-left: 16px;
+    }
+
+    .tree-card {
+        padding: 16px;
+    }
+}
+
+/* ===================================================
+   BREAKPOINT: SMALL MOBILE  ≤ 480px
+   =================================================== */
+@media (max-width: 480px) {
+
+    h2 {
+        font-size: 1.5rem !important;
+    }
+
+    .login-card h2 {
+        font-size: 1.6rem !important;
+    }
+
+    .login-btn,
+    .signup-btn,
+    .btn-upload,
+    .verify-btn,
+    .btn-submit-search {
+        font-size: 0.95rem;
+        padding: 14px;
+    }
+
+    .otp-input {
+        font-size: 20px;
+        letter-spacing: 6px;
+        padding: 14px 0;
+    }
+
+    .isj-table th:nth-child(4),
+    .isj-table td:nth-child(4) {
+        display: none;
+    }
+
+    .action-cell,
+    .action-buttons {
+        flex-wrap: nowrap;
+        gap: 8px;
+    }
+
+    .stat-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .stat-card i {
+        font-size: 22px;
+    }
+
+    .user-info .user-name {
+        display: none;
+    }
+}
+
+/* ===================================================
+   13. UTILITY: Touch-friendly tap targets
+   =================================================== */
+.btn-icon,
+.nav-item,
+.nav-btn,
+.actions a {
+    min-height: 40px;
+    min-width: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===================================================
+   14. SIDEBAR BRAND on small screens
+   =================================================== */
+@media (max-width: 768px) {
+    .brand {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+    }
+}
+
+/* ===================================================
+   15. ADMIN TABLE — responsive action cell
+   =================================================== */
+@media (max-width: 768px) {
+    .action-cell {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+}

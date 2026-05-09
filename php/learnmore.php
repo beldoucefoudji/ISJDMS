@@ -6,6 +6,7 @@
     <title>About ISJ Docs — Our Mission</title>
     <link rel="stylesheet" href="../css/learnmore.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
     
@@ -73,5 +74,6 @@
         </footer>
     </div>
 
+    <script src="../js/responsive.js"></script>
 </body>
 </html>

@@ -6,6 +6,7 @@
     <title>Welcome to ISJ Docs</title>
     <link rel="stylesheet" href="../css/welcome.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
 
@@ -57,6 +58,6 @@
             <p>&copy; 2026 ISJ DOCUMENTATION SYSTEM — Developed for the ISJ Integration Project.</p>
         </footer>
     </div>
-
+<script src="../js/responsive.js"></script>
 </body>
 </html>

@@ -50,6 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Add New User - ISJ Admin</title>
     <link rel="stylesheet" href="../../css/admindashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
     <style>
         .add-container { max-width: 500px; margin: 20px auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .form-group { margin-bottom: 12px; position: relative; }
@@ -123,5 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             this.classList.toggle('fa-eye-slash');
         });
     </script>
+
+    <script src="../../js/responsive.js"></script>
 </body>
 </html>

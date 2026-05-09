@@ -127,6 +127,7 @@ if ($role === 'staff' && $teacher_auth_code !== $OFFICIAL_STAFF_CODE) {
     <title>ISJ Docs — Create Account</title>
     <link rel="stylesheet" href="../css/signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <style>
         .password-container { position: relative; width: 100%; }
         .password-container input { width: 100%; padding-right: 40px; }
@@ -309,5 +310,6 @@ function toggleTeacherCode() {
         passwordField.addEventListener('input', validate);
         confirmField.addEventListener('input', validate);
     </script>
+    <script src="../js/responsive.js"></script>
 </body>
 </html>

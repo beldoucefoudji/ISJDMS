@@ -62,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Edit <?php echo ucfirst($item['type']); ?> - ISJ</title>
     <link rel="stylesheet" href="../../css/admindashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
     <style>
         body { background: #f4f7f6; font-family: 'Segoe UI', sans-serif; padding: 40px; }
         .edit-container { max-width: 600px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); border-top: 5px solid #3498db; }
@@ -118,5 +119,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 </div>
 
+ <script src="../../js/responsive.js"></script>
 </body>
 </html>

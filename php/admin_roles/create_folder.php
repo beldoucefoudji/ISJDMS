@@ -56,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Create New Folder - ISJ</title>
     <link rel="stylesheet" href="../../css/admindashboard.css"> 
+    <link rel="stylesheet" href="../../css/responsive.css">
     <style>
         .form-container { max-width: 600px; margin: 50px auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 5px solid #D4AF37; }
         .form-group { margin-bottom: 20px; }
@@ -115,6 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </form>
 </div>
-
+ 
+<script src="../../js/responsive.js"></script>
 </body>
 </html>

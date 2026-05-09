@@ -57,6 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Set New Password | ISJ Docs</title>
     <link rel="stylesheet" href="../../css/reset_password.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
 </head>
 <body>
     <div class="login-card"> 
@@ -87,5 +88,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </button>
         </form>
     </div>
+    <script src="../../js/responsive.js"></script>
 </body>
 </html>

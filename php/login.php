@@ -101,6 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Login | ISJ Docs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <style>
         .password-field-container { position: relative; width: 100%; margin-bottom: 15px; }
         .password-field-container input { width: 100%; padding-right: 40px; box-sizing: border-box; }
@@ -151,5 +152,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             this.classList.toggle('fa-eye-slash');
         });
     </script>
+    <script src="../js/responsive.js"></script>
 </body>
 </html>

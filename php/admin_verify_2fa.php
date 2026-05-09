@@ -80,6 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verify Admin | ISJ Docs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     
     <style>
         /* Base Styling for Dark Blue Theme */
@@ -226,5 +227,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <a href="logout.php" class="cancel-link">Cancel Login Request</a>
         </div>
     </div>
+    <script src="../js/responsive.js"></script>
 </body>
 </html>

@@ -156,6 +156,7 @@ $docs_result = $conn->query($docs_query);
     <title>ISJ Admin - Dashboard</title>
     <link rel="stylesheet" href="../css/admindashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
     <div class="admin-wrapper">
@@ -610,5 +611,6 @@ $docs_result = $conn->query($docs_query);
         window.location.href = "admindashboard.php"; }
 
 </script>
+<script src="../js/responsive.js"></script>
 </body>
 </html>

@@ -66,6 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <title>Forgot Password | ISJ Docs</title>
     <link rel="stylesheet" href="../../css/forgot_password.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
 </head>
 <body>
     <div class="recovery-container">
@@ -78,5 +79,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
         <p><a href="../../php/login.php">Back to Login</a></p>
     </div>
+    <script src="../../js/responsive.js"></script>
 </body>
 </html>

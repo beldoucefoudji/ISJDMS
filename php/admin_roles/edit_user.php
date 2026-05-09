@@ -47,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Edit User - ISJ Admin</title>
     <link rel="stylesheet" href="../../css/admindashboard.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
     <style>
         .edit-container { max-width: 500px; margin: 30px auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .form-group { margin-bottom: 15px; }
@@ -90,5 +91,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <a href="../admindashboard.php?tab=users" class="cancel-link">Cancel and Go Back</a>
         </form>
     </div>
+    <script src="../../js/responsive.js"></script>
 </body>
 </html>

@@ -92,6 +92,7 @@ function get_deep_folder_count($conn, $folder_id, $user_role) {
     <!-- <link rel="stylesheet" href="../css/userdashboard.css?v=1.1"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../css/userdashboard.css?v=1.2">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
 
@@ -709,5 +710,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+<script src="../js/responsive.js"></script>
 </body>
 </html>
