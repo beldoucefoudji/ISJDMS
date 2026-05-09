@@ -76,10 +76,15 @@ img {
 
 /* ===================================================
    4. TABLES — Horizontal scroll on small screens
+      Covers every wrapper used across all dashboard tabs
    =================================================== */
 .data-table-container,
 .table-card,
-.table-container {
+.table-container,
+#nouveautes-section .table-card,
+#advanced-search-section .table-card,
+#content-search-section .table-card,
+#dashboard-default-content .table-card {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 }
@@ -87,6 +92,17 @@ img {
 .isj-table,
 .admin-table {
     min-width: 600px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Prevent any column from ever being hidden */
+.isj-table th,
+.isj-table td,
+.admin-table th,
+.admin-table td {
+    display: table-cell !important;
+    white-space: nowrap;
 }
 
 /* ===================================================
@@ -378,13 +394,7 @@ img {
         font-size: 13px;
     }
 
-    /* Hide less important columns on mobile */
-    .isj-table th:nth-child(3),
-    .isj-table td:nth-child(3),
-    .admin-table th:nth-child(3),
-    .admin-table td:nth-child(3) {
-        display: none;
-    }
+    /* All columns stay visible — table scrolls horizontally instead */
 
     /* ---- Login / Auth Pages ---- */
     .container {
@@ -616,10 +626,7 @@ img {
         padding: 14px 0;
     }
 
-    .isj-table th:nth-child(4),
-    .isj-table td:nth-child(4) {
-        display: none;
-    }
+    /* All columns stay visible — table scrolls horizontally */
 
     .action-cell,
     .action-buttons {
@@ -669,12 +676,65 @@ img {
 }
 
 /* ===================================================
-   15. ADMIN TABLE — responsive action cell
+   15. TABLE CELLS & ACTION BUTTONS — all tabs, all sizes
    =================================================== */
 @media (max-width: 768px) {
-    .action-cell {
+
+    /* Slightly tighter cell padding on mobile */
+    .isj-table th,
+    .isj-table td,
+    .admin-table th,
+    .admin-table td {
+        padding: 10px 12px !important;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    /* Table wrappers inside every dashboard tab section */
+    #nouveautes-section,
+    #advanced-search-section,
+    #content-search-section,
+    #dashboard-default-content,
+    #plan-section {
+        overflow-x: hidden;
+    }
+
+    #nouveautes-section .table-card,
+    #advanced-search-section .table-card,
+    #content-search-section .table-card,
+    #dashboard-default-content .table-card {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -16px;
+        border-radius: 0;
+    }
+
+    /* Action cell — tight icon row */
+    .action-cell,
+    td.action-buttons {
+        display: flex !important;
         flex-direction: row;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         gap: 6px;
+        padding: 8px 10px !important;
+        align-items: center;
+    }
+
+    .action-cell .btn-icon,
+    td.action-buttons .btn-icon,
+    td.action-buttons a {
+        min-width: 32px;
+        min-height: 32px;
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+        text-decoration: none;
     }
 }
