@@ -10,20 +10,35 @@ require '../PHPMailer/Exception.php';
 require '../PHPMailer/PHPMailer.php';
 require '../PHPMailer/SMTP.php';
 
+if (!isset($_SESSION['user_id'])) {
+    header("Location: ../login.php");
+    exit();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $doc_id = $_POST['doc_id'];
-    $recipient = $_POST['recipient_email'];
-    $user_msg = $_POST['message'];
+    $doc_id = (int)($_POST['doc_id'] ?? 0);
+    $recipient = $_POST['recipient_email'] ?? '';
+    $user_msg = $_POST['message'] ?? '';
     
     // Use session data for the person sending the mail
     $sender_name = $_SESSION['fullname'] ?? 'User';
     $user_role = $_SESSION['role'] ?? ''; 
 
     // Fetch file details
-    $stmt = $conn->prepare("SELECT name, file_path FROM documents WHERE id = ?");
-    $stmt->bind_param("i", $doc_id);
+    if ($user_role === 'admin') {
+        $stmt = $conn->prepare("SELECT name, file_path FROM documents WHERE id = ? AND type = 'file'");
+        $stmt->bind_param("i", $doc_id);
+    } else {
+        $stmt = $conn->prepare("SELECT name, file_path FROM documents WHERE id = ? AND type = 'file' AND (FIND_IN_SET(?, viewed_by) OR viewed_by = 'all')");
+        $stmt->bind_param("is", $doc_id, $user_role);
+    }
     $stmt->execute();
     $file = $stmt->get_result()->fetch_assoc();
+
+    if (!$file) {
+        header("Location: ../userdashboard.php?status=unauthorized");
+        exit();
+    }
 
     // Use your specific modem IP
     $server_ip = '192.168.137.160'; 

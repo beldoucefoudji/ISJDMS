@@ -14,8 +14,20 @@ $initial = substr($displayName, 0, 1);
 $folder_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 // Fetch current folder details
-$folder_query = "SELECT name FROM documents WHERE id = $folder_id AND type = 'folder'";
-$folder_data = $conn->query($folder_query)->fetch_assoc();
+if ($user_role === 'admin') {
+    $folder_stmt = $conn->prepare("SELECT name FROM documents WHERE id = ? AND type = 'folder'");
+    $folder_stmt->bind_param("i", $folder_id);
+} else {
+    $folder_stmt = $conn->prepare("SELECT name FROM documents WHERE id = ? AND type = 'folder' AND (FIND_IN_SET(?, viewed_by) OR viewed_by = 'all')");
+    $folder_stmt->bind_param("is", $folder_id, $user_role);
+}
+$folder_stmt->execute();
+$folder_data = $folder_stmt->get_result()->fetch_assoc();
+if (!$folder_data) {
+    http_response_code(403);
+    echo "Folder not found or access denied.";
+    exit();
+}
 $current_folder_name = $folder_data['name'] ?? 'Unknown Folder';
 ?>
 
@@ -23,9 +35,11 @@ $current_folder_name = $folder_data['name'] ?? 'Unknown Folder';
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $current_folder_name; ?> — ISJ Docs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../css/userdashboard.css?v=1.5">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
 
@@ -124,5 +138,6 @@ $current_folder_name = $folder_data['name'] ?? 'Unknown Folder';
         <?php endif; ?>
     </main>
 </div>
+<script src="../js/responsive.js"></script>
 </body>
 </html>

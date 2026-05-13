@@ -131,3 +131,32 @@
             background: var(--gold);
             color: var(--dark-blue);
         }
+
+        @media (max-width: 480px) {
+            body {
+                min-height: 100svh;
+                height: auto;
+                padding: 16px;
+                box-sizing: border-box;
+            }
+
+            .verify-card {
+                padding: 28px 18px;
+                max-width: 100%;
+            }
+
+            .icon-box {
+                font-size: 46px;
+            }
+
+            h2 {
+                font-size: 21px;
+                line-height: 1.25;
+            }
+
+            .otp-input {
+                font-size: 22px;
+                letter-spacing: 7px;
+                padding: 15px 0;
+            }
+        }

@@ -1,6 +1,14 @@
 <?php
-
 session_start();
+
+// GATEKEEPER: Check if user is logged in AND if they are actually an admin
+if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? '') !== 'admin') {
+    // If not, destroy any partial session and kick them back to login
+    session_destroy();
+    header("Location: login.php?error=unauthorized");
+    exit();
+}
+
 include("database.php");
 
 // --- INTERNAL ACTION HANDLER ---
@@ -115,12 +123,6 @@ function renderAccordionTree($conn, $parent_id = NULL, $open_folders = []) {
     }
 }
 
-// Security Check
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
-    header("Location: login.php?error=unauthorized");
-    exit();
-}
-
 // 1. Fetch Counts for the Overview Cards
 // Total Users
 $userCount = $conn->query("SELECT COUNT(*) as total FROM registration WHERE role != 'admin'")->fetch_assoc()['total'];
@@ -153,6 +155,7 @@ $docs_result = $conn->query($docs_query);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISJ Admin - Dashboard</title>
     <link rel="stylesheet" href="../css/admindashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">

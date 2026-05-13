@@ -20,6 +20,9 @@ $user_id = $_SESSION['user_id'];
 $current_role = $_SESSION['role'];
 $message = "";
 
+// Identify the correct dashboard based on role
+$dashboard_link = ($_SESSION['role'] === 'admin') ? "../admindashboard.php" : "../userdashboard.php";
+
 // --- 3. Fetch User & Admin Data ---
 $user_res = $conn->query("SELECT email, fullname FROM registration WHERE id = $user_id");
 $user_info = $user_res->fetch_assoc();
@@ -308,7 +311,7 @@ function read_docx($filename) {
 
         <button type="submit" class="btn-upload">Start Upload & Search-Indexing</button>
         
-        <a href="../userdashboard.php" class="back-link">
+        <a href="<?php echo $dashboard_link; ?>" class="back-link">
             <i class="fas fa-arrow-left"></i> Back to Dashboard
         </a>
     </form>

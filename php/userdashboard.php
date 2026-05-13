@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    session_destroy();
+    header("Location: login.php?error=unauthorized");
+    exit();
+}
 include("database.php");
 
 // If the user clicks the 'Dashboard' link or we want a clean state
@@ -17,10 +22,7 @@ if ($is_searching) {
     // (Place the $query building and $results = $conn->query code inside this block)
 }
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
+
 // Determine which tab should be open. Default is now 'all_files'
 $active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'all_files';
 
@@ -229,7 +231,8 @@ function get_deep_folder_count($conn, $folder_id, $user_role) {
 
                                    <?php else: ?>
                                         <!-- Default Folder Grid View (Shown when btn-all-files is active) -->
-                                        <div class="folder-grid" style="display: flex; flex-wrap: wrap; gap: 20px; padding: 10px;">
+                                         <!-- updated here -->
+                                        <div class="folder-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; padding: 10px;">
                                         <?php
                                             // Standard query for top-level folders
                                             $sql = "SELECT * FROM documents WHERE type = 'folder' AND parent_id IS NULL AND (FIND_IN_SET('$user_role', viewed_by) OR viewed_by = 'all') ORDER BY name ASC";
@@ -243,7 +246,7 @@ function get_deep_folder_count($conn, $folder_id, $user_role) {
                                                 $icon = (stripos($row['name'], 'Governance') !== false) ? "fa-university" : "fa-folder"; 
                                         ?>
                                             <div class="folder-card-new" onclick="window.location.href='view_folder.php?id=<?php echo $folder_id; ?>'" 
-                                                style="background: #ffffff; border-radius: 12px; padding: 25px; display: flex; align-items: center; gap: 20px; border-left: 6px solid #D4AF37; box-shadow: 0 4px 12px rgba(0,0,0,0.08); cursor: pointer; width: 350px; min-height: 100px; transition: 0.3s;">
+                                                style="background: #ffffff; border-radius: 12px; padding: 25px; display: flex; align-items: center; gap: 20px; border-left: 6px solid #D4AF37; box-shadow: 0 4px 12px rgba(0,0,0,0.08); cursor: pointer; width: 100%; min-height: 100px; transition: 0.3s;">
                                                 
                                                 <div style="font-size: 2.2rem; color: #061428;">
                                                     <i class="fas <?php echo $icon; ?>"></i>

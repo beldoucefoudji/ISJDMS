@@ -1,5 +1,11 @@
 <?php
+session_start();
 include("database.php");
+
+if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? '') !== 'admin') {
+    header("Location: login.php?error=unauthorized");
+    exit();
+}
 
 if(isset($_GET['keyword'])) {
     $keyword = mysqli_real_escape_string($conn, $_GET['keyword']);

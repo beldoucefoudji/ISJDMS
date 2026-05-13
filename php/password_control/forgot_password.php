@@ -64,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgot Password | ISJ Docs</title>
     <link rel="stylesheet" href="../../css/forgot_password.css">
     <link rel="stylesheet" href="../../css/responsive.css">

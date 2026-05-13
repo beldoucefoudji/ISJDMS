@@ -22,14 +22,20 @@ if (!isset($_GET['id'])) {
     exit();
 }
 
-$doc_id = $_GET['id'];
-$query = $conn->prepare("SELECT name FROM documents WHERE id = ?");
-$query->bind_param("i", $doc_id);
+$doc_id = (int)$_GET['id'];
+if ($user_role === 'admin') {
+    $query = $conn->prepare("SELECT name FROM documents WHERE id = ? AND type = 'file'");
+    $query->bind_param("i", $doc_id);
+} else {
+    $query = $conn->prepare("SELECT name FROM documents WHERE id = ? AND type = 'file' AND (FIND_IN_SET(?, viewed_by) OR viewed_by = 'all')");
+    $query->bind_param("is", $doc_id, $user_role);
+}
 $query->execute();
 $doc = $query->get_result()->fetch_assoc();
 
 if (!$doc) {
-    echo "Document not found.";
+    http_response_code(403);
+    echo "Document not found or access denied.";
     exit();
 }
 ?>
@@ -38,6 +44,7 @@ if (!$doc) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Share Document — ISJ Docs</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../../css/responsive.css">

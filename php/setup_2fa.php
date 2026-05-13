@@ -4,6 +4,11 @@ session_start();
 require_once 'phpGangsta/GoogleAuthenticator.php';
 include("database.php");
 
+if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? '') !== 'admin') {
+    header("Location: login.php?error=unauthorized");
+    exit();
+}
+
 $ga = new PHPGangsta_GoogleAuthenticator();
 
 // 1. Generate a unique "Secret Key"

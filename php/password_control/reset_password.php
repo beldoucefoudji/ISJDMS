@@ -55,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Set New Password | ISJ Docs</title>
     <link rel="stylesheet" href="../../css/reset_password.css">
     <link rel="stylesheet" href="../../css/responsive.css">

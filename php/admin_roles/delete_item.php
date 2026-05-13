@@ -3,8 +3,8 @@ session_start();
 include("../database.php");
 
 // Security: Only Admin should be able to delete items
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: login.php");
+if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? '') !== 'admin') {
+    header("Location: ../login.php");
     exit();
 }
 

@@ -1,5 +1,11 @@
 <?php
+session_start();
 include("database.php");
+
+if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? '') !== 'admin') {
+    header("Location: login.php?error=unauthorized");
+    exit();
+}
 
 echo "<h2 style='font-family: Arial; border-bottom: 2px solid #000; padding-bottom: 10px;'>ISJ Docs - Advanced Content Search</h2>";
 echo '<form method="GET" style="margin-bottom: 20px;">

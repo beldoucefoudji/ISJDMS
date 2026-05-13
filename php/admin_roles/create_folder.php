@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$name', '$description', '$author', 'folder', $parent_id, '$viewed_by_str')";
 
     if ($conn->query($sql)) {
-        header("Location: ../admindashboard.php?tab=docs&success=folder_created");
+        header("Location: ../admindashboard.php?tab=plan&success=folder_created");
         exit();
     } else {
         $message = "Error: " . $conn->error;
@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create New Folder - ISJ</title>
     <link rel="stylesheet" href="../../css/admindashboard.css"> 
     <link rel="stylesheet" href="../../css/responsive.css">

@@ -1,5 +1,11 @@
 <?php
-include("../database.php");
+session_start();
+include("database.php");
+
+if (!isset($_SESSION['user_id']) || ($_SESSION['role'] ?? '') !== 'admin') {
+    header("Location: login.php?error=unauthorized");
+    exit();
+}
 
 $term = "Cameroon2026"; // Change this to the unique word in your text file
 

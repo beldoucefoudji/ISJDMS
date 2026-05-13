@@ -1,8 +1,10 @@
+
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$dbname = "web";
+// On Render, these values will be pulled from the "Environment" tab
+$host = getenv('DB_HOST') ?: 'localhost';
+$user = getenv('DB_USER') ?: 'root';
+$pass = getenv('DB_PASS') ?: '';
+$dbname = getenv('DB_NAME') ?: 'isj_database';
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
