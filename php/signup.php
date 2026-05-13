@@ -1,29 +1,39 @@
 <?php
-
+// 1. Affichage forcé des erreurs
 ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+
 session_start();
+
+// 2. Inclusion de la base de données
+if (!file_exists("database.php")) {
+    die("Fichier database.php introuvable !");
+}
 include("database.php");
+
+// 3. Chargement de PHPMailer (Chemin relatif direct)
+// On teste si les fichiers existent individuellement
+if (file_exists(__DIR__ . '/PHPMailer/PHPMailer.php')) {
+    require __DIR__ . '/PHPMailer/Exception.php';
+    require __DIR__ . '/PHPMailer/PHPMailer.php';
+    require __DIR__ . '/PHPMailer/SMTP.php';
+} else {
+    // Si ce n'est pas PHPMailer (Majuscules), on teste phpmailer (minuscules)
+    if (file_exists(__DIR__ . '/phpmailer/PHPMailer.php')) {
+        require __DIR__ . '/phpmailer/Exception.php';
+        require __DIR__ . '/phpmailer/PHPMailer.php';
+        require __DIR__ . '/phpmailer/SMTP.php';
+    } else {
+        die("Erreur : Le dossier PHPMailer est introuvable. Vérifiez le nom sur GitHub.");
+    }
+}
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// On définit le chemin vers le dossier PHPMailer qui est dans le même dossier que signup.php
-$path = __DIR__ . '/PHPMailer/';
-
-// Vérification visuelle pour vous aider
-if (!file_exists($path . 'PHPMailer.php')) {
-    echo "Erreur : Le dossier PHPMailer est introuvable dans : " . $path . "<br>";
-    echo "Contenu du dossier actuel : <pre>";
-    print_r(scandir(__DIR__));
-    echo "</pre>";
-    exit;
-}
-
-require $path . 'Exception.php';
-require $path . 'PHPMailer.php';
-require $path . 'SMTP.php';
 $error_display = "";
+
 
 // Check for URL error parameters to display messages
 if (isset($_GET['error'])) {
