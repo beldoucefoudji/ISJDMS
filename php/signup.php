@@ -1,22 +1,28 @@
 <?php
 
-// Force l'affichage des erreurs pour ne plus avoir de page blanche
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-
 session_start();
 include("database.php");
 
-// Chemins absolus basés sur le dossier actuel
-$baseDir = __DIR__ . '/PHPMailer/';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-if (!file_exists($baseDir . 'Exception.php')) {
-    die("Le serveur ne trouve pas le dossier : " . $baseDir);
+// On définit le chemin vers le dossier PHPMailer qui est dans le même dossier que signup.php
+$path = __DIR__ . '/PHPMailer/';
+
+// Vérification visuelle pour vous aider
+if (!file_exists($path . 'PHPMailer.php')) {
+    echo "Erreur : Le dossier PHPMailer est introuvable dans : " . $path . "<br>";
+    echo "Contenu du dossier actuel : <pre>";
+    print_r(scandir(__DIR__));
+    echo "</pre>";
+    exit;
 }
 
-require $baseDir . 'Exception.php';
-require $baseDir . 'PHPMailer.php';
-require $baseDir . 'SMTP.php';
+require $path . 'Exception.php';
+require $path . 'PHPMailer.php';
+require $path . 'SMTP.php';
 $error_display = "";
 
 // Check for URL error parameters to display messages
