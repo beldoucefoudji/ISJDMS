@@ -1,20 +1,22 @@
 <?php
+<?php
+// Force l'affichage des erreurs pour ne plus avoir de page blanche
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 session_start();
 include("database.php");
 
-// 1. Load PHPMailer classes
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+// Chemins absolus basés sur le dossier actuel
+$baseDir = __DIR__ . '/PHPMailer/';
 
-// On vérifie si les fichiers existent avant de les charger pour éviter la page blanche
-if (!file_exists('PHPMailer/Exception.php') || !file_exists('PHPMailer/PHPMailer.php') || !file_exists('PHPMailer/SMTP.php')) {
-    die("Erreur critique : Les fichiers PHPMailer sont introuvables dans le dossier php/PHPMailer/. Vérifiez les majuscules sur GitHub !");
+if (!file_exists($baseDir . 'Exception.php')) {
+    die("Le serveur ne trouve pas le dossier : " . $baseDir);
 }
 
-require 'PHPMailer/Exception.php';
-require 'PHPMailer/PHPMailer.php';
-require 'PHPMailer/SMTP.php';
-
+require $baseDir . 'Exception.php';
+require $baseDir . 'PHPMailer.php';
+require $baseDir . 'SMTP.php';
 $error_display = "";
 
 // Check for URL error parameters to display messages
