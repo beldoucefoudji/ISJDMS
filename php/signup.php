@@ -1,5 +1,5 @@
 <?php
-<?php
+
 // Force l'affichage des erreurs pour ne plus avoir de page blanche
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
