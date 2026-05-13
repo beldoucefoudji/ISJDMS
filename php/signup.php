@@ -76,9 +76,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($sql->execute()) {
         $_SESSION['pending_email'] = $email;
         $mail = new PHPMailer(true);
+        $mail->SMTPDebug = 2;
 
         try {
             // Server settings
+            
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
