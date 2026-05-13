@@ -1,14 +1,19 @@
-
 <?php
-// On Render, these values will be pulled from the "Environment" tab
-$host = getenv('DB_HOST') ?: 'localhost';
-$user = getenv('DB_USER') ?: 'root';
-$pass = getenv('DB_PASS') ?: '';
-$dbname = getenv('DB_NAME') ?: 'isj_database';
+// 1. Get the values (locally or from Render)
+$host = getenv('DB_HOST') ?: 'mysql-32d8df3-beldoucefoudji-2066.h.aivencloud.com';
+$user = getenv('DB_USER') ?: 'avnadmin';
+$pass = getenv('DB_PASS') ?: 'YOUR_ACTUAL_PASSWORD_HERE';
+$dbname = getenv('DB_NAME') ?: 'defaultdb';
+$port = getenv('DB_PORT') ?: 22007; // Use the number directly here
 
-$conn = new mysqli($host, $user, $pass, $dbname);
+// 2. Initialize and set SSL
+$conn = mysqli_init();
+mysqli_ssl_set($conn, NULL, NULL, NULL, NULL, NULL); 
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// 3. Connect (Notice the (int) before $port to fix the error!)
+mysqli_real_connect($conn, $host, $user, $pass, $dbname, (int)$port);
+
+if (mysqli_connect_errno()) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 ?>
