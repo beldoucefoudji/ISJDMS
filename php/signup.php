@@ -6,6 +6,11 @@ include("database.php");
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// On vérifie si les fichiers existent avant de les charger pour éviter la page blanche
+if (!file_exists('PHPMailer/Exception.php') || !file_exists('PHPMailer/PHPMailer.php') || !file_exists('PHPMailer/SMTP.php')) {
+    die("Erreur critique : Les fichiers PHPMailer sont introuvables dans le dossier php/PHPMailer/. Vérifiez les majuscules sur GitHub !");
+}
+
 require 'PHPMailer/Exception.php';
 require 'PHPMailer/PHPMailer.php';
 require 'PHPMailer/SMTP.php';
