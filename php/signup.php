@@ -85,10 +85,11 @@ if ($role === 'staff' && $teacher_auth_code !== $OFFICIAL_STAFF_CODE) {
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
-            $mail->Username   = 'elmine0520@gmail.com'; 
-            $mail->Password   = 'vmqd vkuc aqer rrns'; 
+            $mail->Username = getenv('SMTP_EMAIL');
+            $mail->Password = getenv('SMTP_PASS');
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port       = 587;
+
 
             $mail->setFrom('elmine0520@gmail.com', 'ISJ Docs System');
             $mail->addAddress($email, $fullname);
